@@ -1,0 +1,8 @@
+config.js
+.env
+backend/cacert.pem
+backend/cache/*.json
+backend/data/*.php
+backend/cache/api/
+
+*.zip
