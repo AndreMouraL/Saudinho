@@ -54,7 +54,9 @@ Busca por texto, chips de ocupação com contagem, filtro por vínculo, ordenaç
 Se a API não responder, o app avisa e usa `js/demo.js`.
 
 ## Aba Rede
-(Cole aqui o print da requisição a `backend/saude.php`, com 2 a 3 linhas de explicação.)
+![Print da aba Rede](docs/print-rede.png)
+
+A requisição GET para `backend/saude.php` retornou status 200. Ela é o proxy do back-end, que consulta a API pública do CNES e devolve a lista de estabelecimentos em JSON para o mapa.
 
 ## Uso de IA
 Ferramenta: Claude (Anthropic). Pedi estrutura, back-end PHP, autenticação e visual. (Complete com o que você alterou e entendeu.)
