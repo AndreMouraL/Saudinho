@@ -76,3 +76,5 @@ A lista do portal do CNES traz só ~10 campos (sem tipo, endereço nem "Sempre a
 
 ## Autoria
 Criado por André Moura, Engenheiro de Dados e Cientista de Dados, com mais de 5 anos no mundo dos dados.
+
+## Engenharia de Dados e ciência Pipeline.
