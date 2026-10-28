@@ -1,0 +1,79 @@
+/* Sistema de design: cores, tipografia, botões, campos, avisos, barra de navegação */
+:root{
+  --azul:#0b4f9c; --azul-esc:#08325f; --azul-claro:#e7f0fb;
+  --verde:#10a07a; --verde-esc:#0a7558; --verde-claro:#e3f6ef;
+  --tinta:#10243a; --suave:#51667a; --linha:#d3dfea; --fundo:#f1f6fa; --painel:#fff;
+  --perigo:#b3261e; --perigo-claro:#fdecea;
+  --E:#0b4f9c; --M:#10a07a; --D:#e0a100; --X:#6b7c8c;
+  --raio:12px;
+  font-family:"Manrope",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--fundo);color:var(--tinta);line-height:1.5}
+h1,h2,h3{line-height:1.25;margin:0}
+a{color:var(--azul)}
+:focus-visible{outline:3px solid #f5a300;outline-offset:2px}
+[hidden]{display:none!important}
+
+.btn,.btn-texto{font:inherit;font-weight:600;cursor:pointer}
+.btn{display:inline-block;padding:.65rem 1.1rem;border-radius:10px;border:1.5px solid var(--azul);background:#fff;color:var(--azul);text-decoration:none;text-align:center}
+.btn:hover:not(:disabled){background:var(--azul-claro)}
+.btn:disabled{opacity:.55;cursor:wait}
+.btn-primario{background:linear-gradient(100deg,#1163b8,var(--azul-esc));border-color:transparent;color:#fff}
+.btn-primario:hover:not(:disabled){background:linear-gradient(100deg,var(--azul),#06264a)}
+.btn-perigo{background:var(--perigo);border-color:var(--perigo);color:#fff}
+.btn-perigo:hover:not(:disabled){background:#8c1d18}
+.btn-largo{width:100%}
+.btn-texto{border:0;background:none;color:var(--azul);padding:.3rem .2rem;display:inline-flex;align-items:center;gap:.3rem}
+.btn-texto:hover{text-decoration:underline}
+.mini{width:18px;height:18px;fill:currentColor;flex:none}
+
+.campo{margin:0 0 1rem}
+.campo label{display:block;margin-bottom:.3rem;font-weight:600;font-size:.88rem}
+.campo label span{color:var(--suave);font-weight:400}
+input,select{width:100%;padding:.7rem .8rem;font:inherit;color:var(--tinta);background:#fff;border:1.5px solid #9db3c6;border-radius:10px}
+input:focus,select:focus{border-color:var(--azul)}
+input+select{margin-top:.4rem}
+.ajuda{display:block;margin-top:.3rem;color:var(--suave);font-size:.8rem}
+.com-botao{position:relative}
+.com-botao input{padding-right:5.2rem}
+.com-botao .btn-texto{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);font-size:.85rem}
+
+.alerta{padding:.7rem .9rem;border-radius:10px;font-size:.92rem;margin:0 0 1rem}
+.alerta.erro{background:var(--perigo-claro);color:var(--perigo);border:1px solid #f3b8b3}
+.alerta.ok{background:var(--verde-claro);color:var(--verde-esc);border:1px solid #b5e3d3}
+
+.badge{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.78rem;font-weight:700}
+.badge.admin{background:var(--azul-claro);color:var(--azul)}
+.badge.usuario{background:#eef1f4;color:var(--suave)}
+.badge.ativo{background:var(--verde-claro);color:var(--verde-esc)}
+.badge.inativo{background:var(--perigo-claro);color:var(--perigo)}
+
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2f7fd6,var(--azul));color:#fff;font-weight:800;font-size:.8rem;display:inline-grid;place-items:center;flex:none}
+
+/* barra de navegação */
+.nav{display:flex;align-items:center;gap:1.2rem;padding:.55rem 1.2rem;background:var(--azul-esc);color:#fff;min-height:60px;border-bottom:3px solid #4d9be6}
+.marca-nav{display:flex;align-items:center;gap:.6rem;color:#fff;text-decoration:none;font-weight:800;font-size:1.05rem}
+.marca-nav img{width:34px;height:34px}
+.links{display:flex;gap:.3rem;flex:1}
+.links a{color:#cfe0f2;text-decoration:none;padding:.4rem .8rem;border-radius:8px;font-weight:600;font-size:.92rem}
+.links a:hover{background:rgba(255,255,255,.1)}
+.links a[aria-current="page"]{background:rgba(255,255,255,.16);color:#fff}
+.usuario-nav{display:flex;align-items:center;gap:.7rem}
+.usuario-nav .quem{line-height:1.2;text-align:right}
+.usuario-nav small{display:block;color:#b9cde2;font-size:.75rem}
+.usuario-nav .btn-texto{color:#fff}
+
+/* avisos rápidos */
+#toasts{position:fixed;right:1rem;bottom:1rem;display:grid;gap:.5rem;z-index:2000}
+.toast{background:var(--tinta);color:#fff;padding:.7rem 1rem;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:320px;font-size:.92rem}
+.toast.ok{background:var(--verde-esc)} .toast.erro{background:var(--perigo)}
+@media (max-width:640px){.usuario-nav .quem{display:none}.nav{gap:.6rem;padding:.5rem .8rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* rodapé com a bandeira do Maranhão */
+.rodape{display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:44px;padding:.4rem 1rem;background:var(--azul-esc);color:#cfe0f2;font-size:.8rem;text-align:center;border-top:3px solid #4d9be6}
+.rodape img{height:24px;width:auto;border-radius:3px;box-shadow:0 1px 6px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.6);flex:none}
+.rodape strong{color:#fff}
+@media (max-width:560px){.rodape{font-size:.7rem}}

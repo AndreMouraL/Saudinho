@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth">
+  <section class="marca">
+    <div class="marca-conteudo">
+      <div class="logo-quadro"><img class="logo-auth" src="img/logo-simbolo.png" alt="Saudinho" height="64"></div>
+      <h1>Saudinho</h1>
+      <p>A rede de saúde do Maranhão: consulte estabelecimentos e profissionais do CNES, com mapa e rotas.</p>
+      <ul>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-mapa"/></svg><span>Localização e rota até cada unidade</span></li>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-usuarios"/></svg><span>Profissionais e onde estão alocados</span></li>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-escudo"/></svg><span>Dados abertos do Ministério da Saúde</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <main class="lado-form">
+    <form id="form-login" class="cartao-form" novalidate>
+      <h2>Entrar na plataforma</h2>
+      <p class="sub">Use o e-mail e a senha do seu cadastro.</p>
+      <div id="erro" class="alerta erro" role="alert" hidden></div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+      </div>
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <div class="com-botao">
+          <input id="senha" type="password" autocomplete="current-password" required>
+          <button type="button" class="btn-texto" data-olho="senha" aria-label="Mostrar ou ocultar a senha">Mostrar</button>
+        </div>
+      </div>
+      <p class="esqueci"><a href="recuperar.html">Esqueci minha senha</a></p>
+      <button type="submit" id="btn" class="btn btn-primario btn-largo">Entrar</button>
+      <p class="rodape-form">Ainda não tem conta? <a href="cadastro.html">Criar cadastro</a></p>
+    </form>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Feito para o Maranhão · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

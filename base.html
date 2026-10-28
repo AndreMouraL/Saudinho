@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base do Maranhão · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/dados.css">
+</head>
+<body class="app dados">
+  <header id="navbar" class="nav"></header>
+
+  <main class="conteudo-dados">
+    <section class="cabeca-dados">
+      <span class="etiqueta-d">📦 Dados abertos</span>
+      <h1>Planilha geral do Maranhão</h1>
+      <p>Reúne todos os estabelecimentos de saúde e seus profissionais, município por município, e entrega em <strong>JSON</strong> e <strong>XLSX</strong>. Fonte: CNES · Ministério da Saúde.</p>
+    </section>
+
+    <section class="painel-dados">
+      <div class="opcoes-dados">
+        <div class="campo">
+          <label for="alvo">O que coletar</label>
+          <select id="alvo"><option value="">Todos os municípios do Maranhão</option></select>
+        </div>
+        <label class="marca"><input type="checkbox" id="op-ficha" checked> <span><strong>Ficha completa de cada unidade</strong><small>traz “Sempre aberto (24 h)”, coordenadas e e-mail. Mais lento, mas é o que preenche o horário de funcionamento.</small></span></label>
+        <label class="marca"><input type="checkbox" id="op-prof" checked> <span><strong>Profissionais de cada unidade</strong><small>ocupação, CBO, vínculo e carga horária (e o nome, quando o CNES informa). É a parte mais demorada.</small></span></label>
+      </div>
+
+      <div class="acoes-dados">
+        <button type="button" id="btn-gerar" class="btn btn-primario">Gerar a base</button>
+        <button type="button" id="btn-pausar" class="btn" hidden>Pausar</button>
+      </div>
+
+      <div id="progresso" class="progresso" hidden>
+        <div class="barra"><div id="barra-in"></div></div>
+        <p id="prog-txt" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="cartoes-n">
+        <div><strong id="n-mun">0</strong><span>municípios prontos</span></div>
+        <div><strong id="n-est">0</strong><span>estabelecimentos</span></div>
+        <div><strong id="n-prof">0</strong><span>profissionais</span></div>
+        <div><strong id="n-24">0</strong><span>funcionam 24 h</span></div>
+      </div>
+
+      <div class="baixar">
+        <button type="button" id="btn-json" class="btn btn-primario" disabled>⬇ Baixar JSON</button>
+        <button type="button" id="btn-xlsx" class="btn btn-primario" disabled>⬇ Baixar XLSX</button>
+        <button type="button" id="btn-limpar-base" class="btn btn-texto" disabled>Apagar o que foi coletado</button>
+      </div>
+      <p id="msg-dados" class="nota-d" role="status"></p>
+      <details class="log"><summary>Registro da coleta</summary><pre id="log"></pre></details>
+    </section>
+
+    <section class="ajuda-dados">
+      <h2>Como funciona</h2>
+      <ul>
+        <li><strong>Pode pausar e continuar.</strong> O que já foi coletado fica guardado neste navegador, município por município. Se fechar a página, é só voltar e clicar em “Gerar a base”.</li>
+        <li><strong>Pode baixar a qualquer momento.</strong> Os arquivos trazem os municípios já concluídos.</li>
+        <li><strong>É demorado.</strong> O Maranhão tem milhares de unidades e a coleta consulta o CNES uma a uma. Deixe a aba aberta. Para acelerar, rode o servidor com <code>PHP_CLI_SERVER_WORKERS=4 php -S localhost:8000</code>.</li>
+        <li><strong>No XLSX</strong> há três abas: Estabelecimentos, Profissionais e Leia-me. No JSON, as listas <code>estabelecimentos</code> e <code>profissionais</code> se ligam pelo campo <code>cnes</code>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Dados abertos do Ministério da Saúde (CNES) · Organização dos dados: André Moura</span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/linhas.js"></script>
+  <script src="js/base.js"></script>
+</body>
+</html>

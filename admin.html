@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administração · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="app admin">
+  <header id="navbar" class="nav"></header>
+
+  <main class="conteudo">
+    <div class="cabeca">
+      <div>
+        <h1>Administração de usuários</h1>
+        <p class="sub">Defina quem é administrador, ative ou desative contas e remova cadastros.</p>
+      </div>
+    </div>
+
+    <div id="resumo" class="resumo"></div>
+    <div id="erro" class="alerta erro" role="alert" hidden></div>
+
+    <div class="barra-tabela">
+      <div class="busca"><svg class="mini"><use href="img/simbolos.svg#i-lupa"/></svg>
+        <input id="busca" type="search" placeholder="Buscar por nome, e-mail ou perfil" aria-label="Buscar usuários"></div>
+    </div>
+    <div class="rolagem">
+      <table>
+        <thead><tr><th>Usuário</th><th>Perfil</th><th>Papel</th><th>Situação</th><th>Último acesso</th><th>Ações</th></tr></thead>
+        <tbody id="corpo"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <dialog id="confirma">
+    <form method="dialog">
+      <h2>Excluir usuário?</h2>
+      <p id="confirma-texto"></p>
+      <div class="acoes">
+        <button value="cancelar" class="btn">Cancelar</button>
+        <button value="ok" class="btn btn-perigo">Excluir</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/ui.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <script src="js/nav.js"></script>
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Feito para o Maranhão · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

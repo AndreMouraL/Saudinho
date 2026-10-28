@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa da rede · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="app">
+  <header id="navbar" class="nav"></header>
+
+  <div class="layout">
+    <aside class="lateral">
+      <section id="vista-lista">
+        <div class="marca-card">
+          <img src="img/logo-simbolo.png" alt="" width="58">
+          <div><strong>Saudinho</strong><span>Saúde para todos · rede de estabelecimentos do CNES</span></div>
+        </div>
+
+        <section class="busca-card" aria-labelledby="tit-busca">
+          <header class="busca-topo">
+            <span class="busca-ico"><svg class="mini"><use href="img/simbolos.svg#i-lupa"/></svg></span>
+            <div><h2 id="tit-busca">Encontre uma unidade de saúde</h2><p>Escolha o município e refine por tipo, gestão ou nome.</p></div>
+          </header>
+
+          <div class="atalhos" role="group" aria-label="Municípios mais buscados">
+            <small>Atalhos</small>
+            <div id="atalhos" class="chips"></div>
+          </div>
+
+          <form id="form-busca" novalidate>
+            <div class="campo">
+              <label for="filtro-municipio">Município <span id="qtd-municipios"></span></label>
+              <div class="campo-ico"><svg class="mini"><use href="img/simbolos.svg#i-mapa"/></svg><input id="filtro-municipio" type="search" autocomplete="off" placeholder="Digite para filtrar a lista"></div>
+              <select id="municipio" aria-label="Lista de municípios do Maranhão"></select>
+            </div>
+            <div class="duas-col">
+              <div id="bloco-tipo" class="campo" hidden>
+                <label for="tipo">Tipo de unidade</label>
+                <select id="tipo"><option value="">Todos os tipos</option></select>
+              </div>
+              <div class="campo">
+                <label for="gestao">Gestão</label>
+                <select id="gestao">
+                  <option value="">Todas as gestões</option>
+                  <option value="E">Estadual</option>
+                  <option value="M">Municipal</option>
+                  <option value="D">Dupla</option>
+                </select>
+              </div>
+            </div>
+            <div class="campo">
+              <label for="nome-unidade">Buscar unidade <span>(opcional)</span></label>
+              <div class="campo-ico"><svg class="mini"><use href="img/simbolos.svg#i-hospital"/></svg><input id="nome-unidade" type="search" autocomplete="off" placeholder="Nome, razão social, CNES, CNPJ ou endereço"></div>
+            </div>
+            <div class="campo">
+              <label for="nome-profissional">Nome do profissional <span>(opcional)</span></label>
+              <div class="campo-ico"><svg class="mini"><use href="img/simbolos.svg#i-pessoa"/></svg><input id="nome-profissional" type="search" autocomplete="off" placeholder="Ex.: Maria da Silva"></div>
+              <small class="dica-campo">Procura o nome entre os profissionais das unidades carregadas e mostra onde trabalha.</small>
+            </div>
+            <div class="busca-acoes">
+              <button type="submit" id="btn-buscar" class="btn btn-primario btn-largo"><svg class="mini"><use href="img/simbolos.svg#i-lupa"/></svg> Buscar no CNES</button>
+              <button type="button" id="btn-limpar" class="btn">Limpar</button>
+            </div>
+          </form>
+          <p class="busca-fonte">Fonte: CNES · Ministério da Saúde (dados abertos)</p>
+        </section>
+
+        <p id="aviso" role="status" aria-live="polite"></p>
+
+        <div id="painel-estab">
+          <section id="resumo-mun" class="resumo-mun" aria-label="Resumo do município" hidden></section>
+          <div id="filtros" class="chips" role="group" aria-label="Filtrar por gestão" hidden></div>
+          <ul id="resultados" class="lista"></ul>
+          <button type="button" id="btn-mais" class="btn btn-largo" hidden>Carregar mais estabelecimentos</button>
+        </div>
+      </section>
+
+      <section id="vista-detalhe" hidden>
+        <button type="button" id="btn-voltar" class="btn-texto"><svg class="mini"><use href="img/simbolos.svg#i-voltar"/></svg> Voltar à lista</button>
+
+        <figure id="det-foto" class="foto">
+          <div id="foto-vazia" class="foto-vazia"><svg class="ico-grande" aria-hidden="true"><use id="foto-ico" href="img/simbolos.svg#i-hospital"/></svg><span id="foto-msg">Procurando foto…</span></div>
+          <img id="foto-img" alt="" hidden>
+          <figcaption id="foto-leg"></figcaption>
+        </figure>
+
+        <h2 id="det-nome" tabindex="-1"></h2>
+        <div class="selos"><p id="det-gestao" class="selo"></p><span id="det-situacao" class="situacao" hidden>● Ativo no CNES</span></div>
+
+        <div class="faixa-info">
+          <div><small>Complexidade</small><strong id="det-compl">—</strong><em id="det-compl-obs"></em></div>
+          <div><small>Horário de funcionamento</small><strong id="det-turno">—</strong><em id="det-turno-obs"></em></div>
+          <div class="largo"><small>Órgão responsável</small><strong id="det-orgao">—</strong></div>
+        </div>
+
+        <div class="acoes">
+          <button type="button" id="btn-rota" class="btn btn-primario">Traçar rota até aqui</button>
+          <a id="link-cnes" class="btn" target="_blank" rel="noopener" hidden>Ver no CNES</a>
+          <a id="link-gmaps" class="btn" target="_blank" rel="noopener" hidden>Google Maps</a>
+          <a id="link-street" class="btn" target="_blank" rel="noopener" hidden>Ver fachada (Street View)</a>
+        </div>
+        <p id="det-rota" role="status" aria-live="polite"></p>
+
+        <div id="abas-det" class="abas-det" role="tablist">
+          <button type="button" role="tab" data-aba="prof" aria-selected="true">Profissionais <span id="qtd-prof"></span></button>
+          <button type="button" role="tab" data-aba="serv" aria-selected="false">Serviços <span id="qtd-serv"></span></button>
+          <button type="button" role="tab" data-aba="dados" aria-selected="false">Dados</button>
+        </div>
+
+        <div id="aba-prof" class="painel-aba" role="tabpanel">
+          <div id="secao-prof">
+<h3 id="tit-prof">Profissionais de saúde</h3>
+      <div id="graf-prof" class="graf-prof" hidden></div>
+
+      <div class="ferramentas" id="fer-prof" hidden>
+        <div class="busca-prof"><svg class="mini"><use href="img/simbolos.svg#i-lupa"/></svg><input id="q-prof" type="search" autocomplete="off" placeholder="Buscar por nome, ocupação ou CBO" aria-label="Buscar profissionais"></div>
+        <div class="duas">
+          <select id="ord-prof" aria-label="Ordenar"><option value="">Ordem original</option><option value="ocup">Ocupação (A–Z)</option><option value="carga">Maior carga horária</option></select>
+          <select id="vinc-prof" aria-label="Filtrar por vínculo"><option value="">Todos os vínculos</option></select>
+        </div>
+        <div class="chips" id="chips-prof" role="group" aria-label="Filtrar por ocupação"></div>
+        <p class="contagem" id="cont-prof" role="status" aria-live="polite"></p>
+      </div>
+
+      <p id="msg-prof" class="nota" role="status"></p>
+      <div id="vazio-prof" class="vazio-card" hidden>
+        <svg class="ico-grande" aria-hidden="true"><use href="img/simbolos.svg#i-lupa"/></svg>
+        <h3 id="vazio-tit"></h3>
+        <p id="vazio-txt"></p>
+        <p class="nota">Código CNES desta unidade: <strong id="vazio-cnes"></strong></p>
+        <div class="vazio-acoes">
+          <button type="button" id="btn-tentar-prof" class="btn btn-primario">Tentar de novo</button>
+          <button type="button" id="btn-copiar-cnes" class="btn">Copiar código CNES</button>
+        </div>
+      </div>
+      <div id="corpo-prof"></div>
+      <div class="duas botoes-prof">
+        <button type="button" id="btn-mais-prof" class="btn" hidden>Carregar mais profissionais</button>
+        <button type="button" id="btn-tudo-prof" class="btn" hidden>Carregar 100 de uma vez</button>
+      </div>
+      <details id="diag" class="diag" hidden><summary>Diagnóstico da API (aparece quando algo vem vazio)</summary><pre id="diag-txt"></pre></details>
+      <p class="nota">Horário da unidade: <strong id="prof-turno"></strong> · carga horária semanal por profissional.</p>
+          </div>
+        </div>
+        <div id="aba-serv" class="painel-aba" role="tabpanel" hidden>
+          <section id="leitos" class="grupo" hidden></section>
+          <h4 class="sub-aba">Especialidades e serviços</h4>
+          <p id="msg-servicos" class="nota"></p>
+          <ul id="lista-servicos" class="servicos"></ul>
+        </div>
+        <div id="aba-dados" class="painel-aba" role="tabpanel" hidden><div id="det-secoes"></div></div>
+      </section>
+    </aside>
+
+    <div id="mapa" role="region" aria-label="Mapa dos estabelecimentos"></div>
+  </div>
+
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Feito para o Maranhão · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/graficos.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/osm.js"></script>
+  <script src="js/ma-contorno.js"></script>
+  <script src="js/mapa.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* Telas de login e cadastro: painel de marca à esquerda, formulário à direita */
+body.auth{display:grid;grid-template-columns:1.05fr 1fr;grid-template-rows:1fr auto;min-height:100vh}
+body.auth .rodape{grid-column:1/-1}
+.marca{position:relative;overflow:hidden;color:#fff;display:flex;align-items:center;padding:3rem;
+  background:linear-gradient(160deg,#0a3f7e 0%,var(--azul) 55%,#0d5cb0 100%)}
+.marca::before,.marca::after{content:"";position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.12)}
+.marca::before{width:520px;height:520px;right:-180px;top:-160px;box-shadow:0 0 0 60px rgba(255,255,255,.04),0 0 0 120px rgba(255,255,255,.03)}
+.marca::after{width:340px;height:340px;left:-120px;bottom:-140px;box-shadow:0 0 0 50px rgba(255,255,255,.04)}
+.marca-conteudo{position:relative;max-width:440px}
+.marca h1{font-size:2.1rem;font-weight:800;letter-spacing:-.02em;margin:1.2rem 0 .6rem}
+.marca p{margin:0 0 1.6rem;color:#d4e6f7;font-size:1.05rem}
+.marca ul{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+.marca li{display:flex;align-items:center;gap:.8rem}
+.ico-li{width:38px;height:38px;padding:8px;border-radius:10px;background:rgba(255,255,255,.14);fill:#fff;flex:none}
+.lado-form{display:grid;place-items:center;padding:2rem 1.2rem;background:var(--painel)}
+.cartao-form{width:100%;max-width:410px}
+.cartao-form h2{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
+.sub{margin:.3rem 0 1.4rem;color:var(--suave)}
+.rodape-form{text-align:center;margin:1.2rem 0 0;color:var(--suave)}
+.nota-pequena{text-align:center;margin:.6rem 0 0;font-size:.8rem;color:var(--suave)}
+.forca{height:6px;border-radius:99px;background:#e3eaf0;margin-top:.5rem;overflow:hidden}
+.forca span{display:block;height:100%;width:0;background:var(--perigo);transition:width .2s,background .2s}
+@media (max-width:860px){
+  body.auth{grid-template-columns:1fr}
+  .marca{padding:1.6rem 1.4rem}
+  .marca h1{font-size:1.5rem;margin:.8rem 0 .3rem}
+  .marca p{margin:0}.marca ul{display:none}
+  .lado-form{align-items:start}
+}
+
+
+
+/* só o quadradinho do logo; o resto do painel é azul */
+.logo-quadro{display:grid;place-items:center;width:92px;height:92px;border-radius:24px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.logo-quadro .logo-auth{height:68px;width:auto;filter:none}
+.lado-form{background:#fff}
+@media (max-width:860px){body.auth{grid-template-rows:auto 1fr auto}.logo-quadro{width:68px;height:68px;border-radius:18px}.logo-quadro .logo-auth{height:50px}}
+.esqueci{margin:-.4rem 0 1rem;text-align:right;font-size:.88rem}
+.alerta a{font-weight:700}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova senha · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth">
+  <section class="marca">
+    <div class="marca-conteudo">
+      <div class="logo-quadro"><img class="logo-auth" src="img/logo-simbolo.png" alt="Saudinho" height="64"></div>
+      <h1>Crie uma nova senha</h1>
+      <p>Escolha uma senha que você não use em outros sites.</p>
+      <ul>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-escudo"/></svg><span>Mínimo de 8 caracteres, com letras e números</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <main class="lado-form">
+    <form id="form-red" class="cartao-form" novalidate>
+      <h2>Nova senha</h2>
+      <p class="sub">Defina a nova senha da sua conta.</p>
+      <div id="erro" class="alerta erro" role="alert" hidden></div>
+      <div class="campo">
+        <label for="senha">Nova senha</label>
+        <div class="com-botao">
+          <input id="senha" type="password" autocomplete="new-password" required>
+          <button type="button" class="btn-texto" data-olho="senha" aria-label="Mostrar ou ocultar a senha">Mostrar</button>
+        </div>
+        <div class="forca" aria-hidden="true"><span id="barra"></span></div>
+        <small id="forca-texto" class="ajuda">Mínimo de 8 caracteres, com letras e números.</small>
+      </div>
+      <div class="campo">
+        <label for="senha2">Repita a nova senha</label>
+        <input id="senha2" type="password" autocomplete="new-password" required>
+      </div>
+      <button type="submit" id="btn" class="btn btn-primario btn-largo">Salvar nova senha</button>
+      <p class="rodape-form"><a href="login.html">Voltar para o login</a></p>
+    </form>
+  </main>
+
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Feito para o Maranhão · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <script src="js/redefinir.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sobre.css">
+</head>
+<body class="sobre">
+  <header class="topo">
+    <a class="marca-topo" href="sobre.html"><img src="img/logo-simbolo.png" alt=""><span>Saudinho</span></a>
+    <nav aria-label="Principal">
+      <a href="#origem">Origem</a><a href="#recursos">O que faz</a><a href="#presenca">Presença do MA</a><a href="#dados">Dados</a><a href="#equipe">Quem criou</a>
+      <a class="btn-topo" href="index.html">Abrir o mapa</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="heroi">
+      <div class="heroi-txt">
+        <span class="etiqueta">🎓 Projeto acadêmico · Maranhão</span>
+        <h1>Saúde para todos,<br><em>nascida na faculdade.</em></h1>
+        <p>O Saudinho é um mapa da rede de saúde do Maranhão. Ele mostra onde fica cada unidade, qual a complexidade, que horas funciona e quem trabalha lá, com dados abertos do Ministério da Saúde.</p>
+        <div class="heroi-acoes">
+          <a class="btn btn-primario" href="index.html">Explorar a rede</a>
+          <a class="btn" href="#origem">Como nasceu</a>
+        </div>
+      </div>
+      <div class="heroi-arte" aria-hidden="true"><img src="img/logo-completo.png" alt=""></div>
+    </section>
+
+    <section class="numeros" aria-label="Em números">
+      <div><strong id="n-mun">217</strong><span>municípios do Maranhão</span></div>
+      <div><strong>1</strong><span>chaves de API: 100% dados abertos</span></div>
+      <div><strong>3</strong><span>fontes: CNES, IBGE e OpenStreetMap</span></div>
+      <div><strong>24 h</strong><span>mostra quem funciona sem parar</span></div>
+    </section>
+
+    <section id="origem" class="bloco">
+      <p class="sobretitulo">Nossa história</p>
+      <h2>Criado e nascido na faculdade</h2>
+      <p class="lead">O Saudinho não saiu de uma empresa nem de um órgão público. Ele foi pensado, desenhado e programado por estudantes, dentro da faculdade, a partir de uma pergunta simples: <strong>por que é tão difícil descobrir qual unidade de saúde atende perto de mim?</strong></p>
+
+      <ol class="linha-tempo">
+        <li>
+          <span class="marco">1</span>
+          <div class="cartao"><h3>A pergunta em sala de aula</h3><p>Tudo começou numa disciplina de desenvolvimento web: o desafio era usar uma API pública para resolver um problema real do dia a dia.</p></div>
+        </li>
+        <li>
+          <span class="marco">2</span>
+          <div class="cartao"><h3>Escolha da Trilha B</h3><p>A turma optou por dados abertos, sem chave de API. A API do Ministério da Saúde (CNES) virou a base: estabelecimentos, profissionais e serviços do Maranhão.</p></div>
+        </li>
+        <li>
+          <span class="marco">3</span>
+          <div class="cartao"><h3>Do protótipo ao mapa</h3><p>Primeiro veio uma lista simples. Depois login, painel de administração, mapa com Leaflet, rotas, gráficos e o pino do Saudinho na cor de cada gestão.</p></div>
+        </li>
+        <li>
+          <span class="marco">4</span>
+          <div class="cartao"><h3>Acessível e para todo mundo</h3><p>Entrou o VLibras para tradução em Libras, e cada unidade ganhou complexidade, horário de funcionamento e foto.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="recursos" class="bloco claro">
+      <p class="sobretitulo">O que o Saudinho faz</p>
+      <h2>Tudo sobre a unidade, num só lugar</h2>
+      <div class="grade">
+        <article class="recurso"><span class="ic">🗺️</span><h3>Mapa da rede</h3><p>Todas as unidades do município no mapa, com fundo cinza, escuro ou satélite, e rota até o local.</p></article>
+        <article class="recurso"><span class="ic">🕒</span><h3>Horário de funcionamento</h3><p>Mostra “Sempre aberto (24 h)” quando o CNES informa, ou o turno declarado pela unidade.</p></article>
+        <article class="recurso"><span class="ic">🏥</span><h3>Complexidade</h3><p>Atenção primária (baixa), média ou alta complexidade e urgência, com selo colorido em cada cartão.</p></article>
+        <article class="recurso"><span class="ic">📷</span><h3>Fotos dos locais</h3><p>Miniaturas do Wikimedia Commons na lista e foto grande na ficha, mais o botão de Street View.</p></article>
+        <article class="recurso"><span class="ic">👩‍⚕️</span><h3>Profissionais</h3><p>Ocupação, vínculo e carga horária por unidade, com busca, filtros e gráficos.</p></article>
+        <article class="recurso"><span class="ic">🤟</span><h3>Acessibilidade</h3><p>VLibras em todas as páginas, com tradução para a Língua Brasileira de Sinais.</p></article>
+        <article class="recurso destaque">
+          <span class="ic">📦</span>
+          <div><h3>Planilha geral do Maranhão (JSON e XLSX)</h3><p>Reúne todos os estabelecimentos e profissionais de saúde do estado, município por município, em arquivos prontos para análise, pesquisa e reportagem.</p></div>
+          <a class="btn btn-primario" href="base.html">Gerar a base</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="presenca" class="bloco">
+      <p class="sobretitulo">Missão</p>
+      <h2>Dar presença ao Maranhão nos dados abertos</h2>
+      <p class="lead">Os dados da saúde maranhense existem, mas estão espalhados e difíceis de usar. O Saudinho junta tudo num só lugar e devolve para a sociedade: um mapa para quem precisa de atendimento e uma base aberta para quem quer entender e melhorar a rede.</p>
+      <div class="grade tres">
+        <article class="recurso"><span class="ic">📍</span><h3>Estado visível</h3><p>Os 217 municípios, das capitais às cidades pequenas, aparecem com o mesmo cuidado no mapa.</p></article>
+        <article class="recurso"><span class="ic">🔎</span><h3>Transparência</h3><p>Cada informação indica a fonte e quando é uma estimativa, para o cidadão saber o que pode confiar.</p></article>
+        <article class="recurso"><span class="ic">📊</span><h3>Dados para decidir</h3><p>Gestores, pesquisadores e jornalistas podem baixar a base completa e cruzar com seus próprios estudos.</p></article>
+      </div>
+    </section>
+
+    <section id="dados" class="bloco claro">
+      <p class="sobretitulo">Transparência</p>
+      <h2>De onde vêm os dados</h2>
+      <div class="fontes">
+        <div><h3>CNES · Ministério da Saúde</h3><p>Cadastro Nacional de Estabelecimentos de Saúde: nome, tipo, gestão, endereço, coordenadas, profissionais e serviços.</p></div>
+        <div><h3>IBGE</h3><p>Lista oficial dos municípios do Maranhão.</p></div>
+        <div><h3>OpenStreetMap</h3><p>Mapa, rotas (OSRM) e fonte reserva quando o CNES não responde.</p></div>
+        <div><h3>Wikimedia Commons</h3><p>Fotos públicas dos estabelecimentos, quando existem.</p></div>
+      </div>
+      <p class="aviso-nota">A complexidade pode ser <em>estimada pelo tipo da unidade</em> quando o CNES não a informa, e o app avisa isso na tela. Para atendimento oficial, confirme sempre com a unidade.</p>
+    </section>
+
+    <section id="equipe" class="bloco">
+      <p class="sobretitulo">Quem criou</p>
+      <h2>Feito por quem vive de dados</h2>
+      <article class="criador">
+        <span class="avatar-c" aria-hidden="true">AM</span>
+        <div>
+          <h3>André Moura</h3>
+          <p class="cargo">Engenheiro de Dados e Cientista de Dados</p>
+          <p class="tempo"><strong>+5 anos</strong> no mundo dos dados</p>
+          <p>Criador do Saudinho. Nascido na faculdade, o projeto une engenharia e ciência de dados para transformar os registros públicos do CNES em algo que o cidadão maranhense consegue usar e que o estado pode mostrar com orgulho.</p>
+          <div class="tags"><span>Engenharia de dados</span><span>Ciência de dados</span><span>Dados abertos</span><span>Saúde pública</span></div>
+        </div>
+      </article>
+      <p class="aviso-nota">Ferramenta de IA usada no desenvolvimento: Claude (Anthropic), para estrutura, back-end PHP, autenticação e visual.</p>
+    </section>
+
+    <section class="chamada">
+      <h2>Pronto para encontrar uma unidade?</h2>
+      <p>Escolha o município e veja complexidade, horário e fotos de cada estabelecimento.</p>
+      <a class="btn btn-claro" href="index.html">Abrir o mapa da rede</a>
+    </section>
+  </main>
+
+  <footer class="rodape-sobre">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Criado por André Moura · Feito no Maranhão, na faculdade · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+    <script src="js/libras.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criar cadastro · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth">
+  <section class="marca">
+    <div class="marca-conteudo">
+      <div class="logo-quadro"><img class="logo-auth" src="img/logo-simbolo.png" alt="Saudinho" height="64"></div>
+      <h1>Crie sua conta</h1>
+      <p>Com o cadastro você acessa o mapa da rede de saúde e a lista de profissionais por unidade.</p>
+      <ul>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-escudo"/></svg><span>Senha guardada com criptografia</span></li>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-usuarios"/></svg><span>Perfis de acesso: usuário e administrador</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <main class="lado-form">
+    <form id="form-cadastro" class="cartao-form" novalidate>
+      <h2>Criar cadastro</h2>
+      <p class="sub">Leva menos de um minuto.</p>
+      <div id="erro" class="alerta erro" role="alert" hidden></div>
+
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input id="nome" autocomplete="name" maxlength="80" required>
+      </div>
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+      </div>
+      <div class="campo">
+        <label for="perfil">Seu perfil</label>
+        <select id="perfil" required>
+          <option value="">Selecione…</option>
+          <option>Profissional de saúde</option>
+          <option>Gestor(a) de saúde</option>
+          <option>Estudante ou pesquisador(a)</option>
+          <option>Cidadão</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <div class="com-botao">
+          <input id="senha" type="password" autocomplete="new-password" required>
+          <button type="button" class="btn-texto" data-olho="senha" aria-label="Mostrar ou ocultar a senha">Mostrar</button>
+        </div>
+        <div class="forca" aria-hidden="true"><span id="barra"></span></div>
+        <small id="forca-texto" class="ajuda">Mínimo de 8 caracteres, com letras e números.</small>
+      </div>
+      <div class="campo">
+        <label for="senha2">Repita a senha</label>
+        <input id="senha2" type="password" autocomplete="new-password" required>
+      </div>
+      <button type="submit" id="btn" class="btn btn-primario btn-largo">Criar conta</button>
+      <p class="rodape-form">Já tem conta? <a href="login.html">Entrar</a></p>
+      <p class="nota-pequena">O primeiro cadastro feito neste sistema vira administrador.</p>
+    </form>
+  </main>
+
+  <script src="js/ui.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Feito para o Maranhão · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+  <script src="js/cadastro.js"></script>
+</body>
+</html>

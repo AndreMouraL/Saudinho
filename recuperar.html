@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recuperar senha · Saudinho</title>
+  <link rel="icon" href="img/logo-simbolo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth">
+  <section class="marca">
+    <div class="marca-conteudo">
+      <div class="logo-quadro"><img class="logo-auth" src="img/logo-simbolo.png" alt="Saudinho" height="64"></div>
+      <h1>Esqueceu a senha?</h1>
+      <p>Sem problema. Informe o e-mail do seu cadastro e enviaremos um link para criar uma nova senha.</p>
+      <ul>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-escudo"/></svg><span>Link de uso único, válido por 30 minutos</span></li>
+        <li><svg class="ico-li"><use href="img/simbolos.svg#i-usuarios"/></svg><span>Sua senha antiga deixa de valer após a troca</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <main class="lado-form">
+    <form id="form-rec" class="cartao-form" novalidate>
+      <h2>Recuperar senha</h2>
+      <p class="sub">Digite o e-mail que você usou no cadastro.</p>
+      <div id="erro" class="alerta erro" role="alert" hidden></div>
+      <div id="ok" class="alerta ok" role="status" hidden></div>
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+      </div>
+      <button type="submit" id="btn" class="btn btn-primario btn-largo">Enviar link de recuperação</button>
+      <p class="rodape-form"><a href="login.html">Voltar para o login</a></p>
+    </form>
+  </main>
+
+  <footer class="rodape">
+    <img src="img/bandeira-ma.svg" alt="Bandeira do Estado do Maranhão" width="36" height="24">
+    <span><strong>Saudinho</strong> · Feito para o Maranhão · Dados abertos do Ministério da Saúde (CNES)</span>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/libras.js" defer></script>
+  <script src="js/sessao.js"></script>
+  <script src="js/recuperar.js"></script>
+</body>
+</html>
