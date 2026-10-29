@@ -59,7 +59,7 @@ Se a API não responder, o app avisa e usa `js/demo.js`.
 A requisição GET para `backend/saude.php` retornou status 200. Ela é o proxy do back-end, que consulta a API pública do CNES e devolve a lista de estabelecimentos em JSON para o mapa.
 
 ## Uso de IA
-Ferramenta: Claude (Anthropic). Pedi estrutura, back-end PHP, autenticação e visual. 
+Ferramenta: Claude (Anthropic). Pedi estrutura, back-end PHP, autenticação e visual. Uso moderado maior parte meu como projeto pessoal. 
 
 ## Localização no mapa
 A lista do portal do CNES não traz latitude/longitude, mas a ficha da unidade (`/services/estabelecimentos/{município+CNES}`) traz `nuLatitude`/`nuLongitude`: o app lê essas coordenadas oficiais primeiro. Só quando a ficha não as tem, localiza a unidade pelo endereço (rua+número+bairro, depois rua, CEP e bairro) no Nominatim/OpenStreetMap, em segundo plano e a ~1 unidade por segundo, e guarda o resultado no navegador (`localStorage`). Só vale se cair dentro do Maranhão; achados só por CEP/bairro aparecem como "localização aproximada".
